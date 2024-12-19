@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+input{
+  font-family: 'Poppins';
+}
+
 a{
   text-decoration: none;
 }
@@ -103,25 +107,21 @@ body {
 /*BUTTON*/
 
 button {
-  background-color: #e0e0e0;
-  border-radius: 50px;
-  box-shadow: inset 4px 4px 10px #bcbcbc, inset -4px -4px 10px #ffffff;
-  color: #4d4d4d;
+  background-color: rgb(0, 153, 255);
+  color: #fff;
   cursor: pointer;
-  font-size: 18px;
-  padding: 15px 40px;
-  transition: all 0.2s ease-in-out;
-  border: 2px solid rgb(206, 206, 206);
-  font-family: var(--font-body);
+  transition: background-color 0.3s ease;
+  width: 400px;
+  padding: 15px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  outline: none;
 }
 
 button:hover {
-  box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
-}
-
-button:focus {
-  outline: none;
-  box-shadow: inset 2px 2px 5px #bcbcbc, inset -2px -2px 5px #ffffff, 2px 2px 5px #bcbcbc, -2px -2px 5px #ffffff;
+  background-color: rgb(0, 125, 209);
 }
 
 /*BUTTON END*/
@@ -129,12 +129,14 @@ button:focus {
 /*ABOUT*/
 
 .main-content{
-  display:block;
+  display:flex;
   margin:auto;
   width:100%;
   align-content: center;
   padding: 5% 10% 5%;
   background-color: #e8e8e8;
+  position:relative;
+  justify-content: center;
 }
 
 
@@ -188,6 +190,129 @@ header {
 }
 
 /*HEADER SECTION END*/
+
+/*SIGNUP-SIGNIN*/
+.form-container {
+  background-color: #34495e;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: center;
+  animation: slideIn 0.8s ease-in-out, borderLight 2s infinite alternate;
+}
+
+@keyframes slideIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes borderLight {
+  from {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+  to {
+      box-shadow: 0 0 20px orange;
+  }
+}
+
+.form-container h2 {
+  color: #ecf0f1;
+  margin-bottom: 20px;
+}
+
+.login-form input, .signup-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+
+.login-form input[type="submit"] {
+  background-color: rgb(0, 153, 255);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-form input[type="submit"]:hover {
+  background-color: rgb(0, 125, 209);
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  background-color: #ecf0f1;
+  color: #333;
+}
+
+.login-form input[type="text"]:focus,
+.login-form input[type="password"]:focus {
+  background-color: #d5dbdb;
+}
+
+.signup-link a,
+.login-link a {
+  color: orange;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.signup-link a:hover,
+.login-link a:hover {
+  background-image: linear-gradient(to right, rgb(0, 153, 255),orange, rgb(43, 75, 255), rgb(40, 223, 255));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  background-size: 200%;
+  background-position: -200%;
+  animation: animatedText 2s infinite alternate-reverse;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+
+.signup-link p,
+.login-link p {
+  color: #7f8c8d;
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.signup-form input[type="submit"] {
+  background-color: rgb(0, 153, 255);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.signup-form input[type="submit"]:hover {
+  background-color: rgb(0, 125, 209);
+}
+
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+  background-color: #cbd1d3;
+  color: #333;
+}
+
+.signup-form input[type="text"]:focus,
+.signup-form input[type="password"]:focus {
+  background-color: #9eb1b1;
+}
+/*SIGNUP END*/
 
 /* utility classes */
 .highlight {

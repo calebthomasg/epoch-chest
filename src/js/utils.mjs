@@ -29,14 +29,18 @@
 // // or a more concise version if you are into that sort of thing:
 // // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
-// // retrieve data from localstorage
-// export function getLocalStorage(key) {
-//   return JSON.parse(localStorage.getItem(key));
-// }
-// // save data to local storage
-// export function setLocalStorage(key, data) {
-//   localStorage.setItem(key, JSON.stringify(data));
-// }
+// retrieve data from localstorage
+export function getLocalStorage(key) {
+  const data = localStorage.getItem(key);
+  return data ? JSON.parse(data) : null;
+
+}
+// save data to local storage
+export function setLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+
 // // set a listener for both touchend and click
 // export function setClick(selector, callback) {
 //   qs(selector).addEventListener("touchend", (event) => {
@@ -65,6 +69,8 @@
 //   const htmlString = list.map(templateFn);
 //   parentElement.insertAdjacentHTML(position, htmlString.join(""));
 // }
+
+
 
 export async function renderWithTemplate(
   templateFn,
