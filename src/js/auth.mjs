@@ -1,38 +1,40 @@
-import { getLocalStorage, setLocalStorage} from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
-//DEFAULT FOR TESTING
+// Default users for testing (only added once if not in localStorage)
 const defaultUsers = [
-    { username: "testuser", password: "12345"},
-    { username: "johndoe", password: "mypassword"}
+    { username: "testuser", password: "12345" },
+    { username: "johndoe", password: "mypassword" }
 ];
 
-if (!getLocalStorage("users")){
+// Check if users exist in localStorage; if not, add default users
+if (!getLocalStorage("users")) {
     setLocalStorage("users", defaultUsers);
 }
 
+// Login function to validate username and password
 export function loginUser(username, password) {
-    const users = getLocalStorage("users") || []; //Retrieve users from localStorage
-    //or use an empty array
+    const users = getLocalStorage("users") || [];
     const user = users.find(u => u.username === username && u.password === password);
 
-    if (user){
-        return { success: true, message: "Login successful"};
-    } else{
-        return {success: false, message: "Invalid username or password."};
+    // Return success or failure messages
+    if (user) {
+        return { success: true, message: "Login successful!" };
+    } else {
+        return { success: false, message: "Invalid username or password." };
     }
 }
 
-console.log(loginUser("testuser", "12345")); //should log success
-console.log(loginUser("testuser", "wrongpassword")); //should log false
-// import { LocalStorage } from "node-localstorage";
+// Signup function to add a new user to localStorage
+export function signupUser(username, password) {
+    const users = getLocalStorage("users") || [];
+    const userExists = users.some(u => u.username === username);
 
-// const localStorage = new LocalStorage('./scratch'); // Creates a local directory to store data
+    if (userExists) {
+        return { success: false, message: "Username already exists!" };
+    }
 
-// export function getLocalStorage(key) {
-//     const data = localStorage.getItem(key);
-//     return data ? JSON.parse(data) : null;
-// }
+    users.push({ username, password });
+    setLocalStorage("users", users);
+    return { success: true, message: "Signup successful!" };
+}
 
-// export function setLocalStorage(key, value) {
-//     localStorage.setItem(key, JSON.stringify(value));
-// }
